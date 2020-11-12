@@ -4,12 +4,16 @@ const jwt = require('jsonwebtoken');
 module.exports = {
   comparePasswords: (password, hash) => compareSync(password, hash),
   // eslint-disable-next-line camelcase
-  createToken: ({ id, email, first_name }) => {
+  createToken: ({
+    // eslint-disable-next-line camelcase
+    id, email, first_name, profile_img,
+  }) => {
     try {
       const payload = {
         id,
         email,
         first_name,
+        profile_img,
       };
       const options = {
         expiresIn: '1hr',
